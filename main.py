@@ -79,10 +79,10 @@ class MiningGame:
             for j in range(self.world.size):
                 block = self.world.content[i][j]
                 if block is not None:
-                    block_surface = pygame.Surface([int(block_size[0]), int(block_size[1])], masks=(0, 0, 0, 0))
+                    block_surface = pygame.Surface([int(x + block_size[0]) - int(x), int(y + block_size[1]) - int(y)], masks=(0, 0, 0, 0))
                     block_surface.fill(block.mineral.color)
                     block_surface.set_alpha(int(55.0 + 200.0 * block.health / block.mineral.health))
-                    self.screen.blit(block_surface, [x, y])
+                    self.screen.blit(block_surface, [x-1, y-1])
                 x += block_size[0]
             y += block_size[1]
             x = offset[0]
